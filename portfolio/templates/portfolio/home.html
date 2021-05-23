@@ -1,0 +1,18 @@
+{% extends 'portfolio/base.html' %}
+
+{% block content %}
+<h1>Welcome to the Home Page</h1>
+<a href="{% url 'blog:all_home' %}">Blog</a>
+{% load static %}
+<img src="{% static 'portfolio/Mine.jpg' %}">
+<a href="{% static 'portfolio/Kundli.pdf' %}">Kundli</a>
+{% for Project in Projects %}
+<h2>{{Project.title}}</h2>
+<p>{{Project.description}}</p>
+<img src="{{Project.image.url}}">
+{% if Project.url %}
+<a href="{{Project.url}}">Link</a>
+{% endif %}
+{% endfor %}
+
+{% endblock %}
